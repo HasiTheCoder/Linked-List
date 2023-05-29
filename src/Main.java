@@ -1,50 +1,91 @@
+import java.util.Scanner;
+
 public class Main {
+    private static Scanner scanner = new Scanner(System.in);
+    private static LinkedList linkedList = new LinkedList();
+
     public static void main(String[] args) {
-        // Create a new linked list
-        LinkedList list = new LinkedList();
+        boolean exit = false;
+        while (!exit) {
+            displayMenu();
+            int choice = scanner.nextInt();
+            scanner.nextLine(); // Consume newline character
 
-        // Add elements to the list
-        list.addToBack(5);
-        list.addToBack(7);
-        list.addToFront(16);
-        list.addToBack(79);
+            switch (choice) {
+                case 1 -> {
+                    linkedList = new LinkedList();
+                    System.out.println("New empty list created.");
+                }
+//                case 2:
+//                    createListWithItems();
+//                    break;
+                case 3 -> {
+                    System.out.println("Enter data to add: ");
+                    linkedList.addToFront(scanner.nextLine());
+                }
+                case 4 -> removeSpecificItem();
+                case 5 -> {
+                    linkedList.makeEmpty();
+                    System.out.println("List cleared.");
+                }
+                case 6 -> System.out.println("List is " + (linkedList.isEmpty() ? "empty." : "not empty."));
+                case 7 -> System.out.println("Number of elements in the list: " + linkedList.size());
+                case 8 -> displayList();
+                case 9 -> {
+                    exit = true;
+                    System.out.println("Exiting the program. Goodbye!");
+                }
+                case 10 -> {
+                    System.out.println("Enter data to add: ");
+                    linkedList.addToBack(scanner.nextLine());
+                }
+            }
+            System.out.println(linkedList);
+        }
+    }
 
-        // Display the initial list
-        System.out.println("Initial List: " + list);
+    private static void displayMenu() {
+        System.out.println("\n--- Linked List Tester ---");
+        System.out.println("1. New Empty List");
+//        System.out.println("2. List with Items");
+        System.out.println("3. Add item to front");
+        System.out.println("4. Remove specific item");
+        System.out.println("5. Clear list");
+        System.out.println("6. Is list Empty?");
+        System.out.println("7. Number of elements in list");
+        System.out.println("8. Display the list");
+        System.out.println("9. Exit");
+        System.out.println("10. Add item to back");
+        System.out.print("Enter your choice: ");
+    }
 
-        // Remove an element from the list
-<<<<<<< Updated upstream
-        list.remove("Grapes");
-=======
-        list.remove(5);
->>>>>>> Stashed changes
+//    private static void createListWithItems() {
+//        System.out.print("Enter the number of items to add: ");
+//        int itemCount = scanner.nextInt();
+//        scanner.nextLine(); // Consume newline character
+//
+//        for (int i = 1; i <= itemCount; i++) {
+//            System.out.print("Enter item " + i + ": ");
+//            String item = scanner.nextLine();
+//            linkedList.add(item);
+//        }
+//        System.out.println("Items added to the list.");
+//    }
 
-        // Display the updated list
-        System.out.println("Updated List: " + list);
+    private static void addItemToFront() {
+        System.out.print("Enter the item to add to the front: ");
+        String item = scanner.nextLine();
+        linkedList.addToFront(item);
+        System.out.println("Item added to the front of the list.");
+    }
 
-        // Test the size of the list
-        System.out.println("Size of the List: " + list.size());
+    private static void removeSpecificItem() {
+        System.out.print("Enter the item to remove: ");
+        String item = scanner.nextLine();
+        linkedList.remove(item);
+    }
 
-        // Empty the list
-        list.makeEmpty();
-
-        // Display the empty list
-        System.out.println("Empty List: " + list);
-
-        // Add elements to the list again
-        list.addToBack(89);
-        list.addToBack(34);
-
-        // Display the list
-        System.out.println("List: " + list);
-
-        // Remove an element from the list
-        list.remove(34);
-
-        // Display the updated list
-        System.out.println("Updated List: " + list);
-
-        // Test the size of the list
-        System.out.println("Size of the List: " + list.size());
+    private static void displayList() {
+        System.out.println("List: " + linkedList.toString());
     }
 }
