@@ -4,16 +4,20 @@ public class Main {
         LinkedList list = new LinkedList();
 
         // Add elements to the list
-        list.addToBack("Apple");
-        list.addToBack("Banana");
-        list.addToFront("Orange");
-        list.addToBack("Grapes");
+        list.addToBack(5);
+        list.addToBack(7);
+        list.addToFront(16);
+        list.addToBack(79);
 
         // Display the initial list
         System.out.println("Initial List: " + list);
 
         // Remove an element from the list
+<<<<<<< Updated upstream
         list.remove("Grapes");
+=======
+        list.remove(5);
+>>>>>>> Stashed changes
 
         // Display the updated list
         System.out.println("Updated List: " + list);
@@ -28,14 +32,14 @@ public class Main {
         System.out.println("Empty List: " + list);
 
         // Add elements to the list again
-        list.addToBack("Mango");
-        list.addToBack("Pineapple");
+        list.addToBack(89);
+        list.addToBack(34);
 
         // Display the list
         System.out.println("List: " + list);
 
         // Remove an element from the list
-        list.remove("Mango");
+        list.remove(34);
 
         // Display the updated list
         System.out.println("Updated List: " + list);
