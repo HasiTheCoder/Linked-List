@@ -65,6 +65,9 @@ public class LinkedList {
             current = current.getNext();
         }
     }
+    public boolean isEmpty() {
+        return head == null;
+    }
     public int size() {
         Node temp = head;
         int size = 0;

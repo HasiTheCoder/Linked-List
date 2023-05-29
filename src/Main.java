@@ -13,7 +13,7 @@ public class Main {
         System.out.println("Initial List: " + list);
 
         // Remove an element from the list
-        list.remove("Banana");
+        list.remove("Grapes");
 
         // Display the updated list
         System.out.println("Updated List: " + list);
