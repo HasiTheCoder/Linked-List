@@ -4,12 +4,12 @@ public class LinkedList {
         head = null;
     }
     private class Node {
-        private String data;
+        private int data;
         private Node next;
-        private Node(String dataN) {
+        private Node(int dataN) {
             data = dataN;
         }
-        private String getData() {
+        private int getData() {
             return data;
         }
         private Node getNext() {
@@ -19,7 +19,32 @@ public class LinkedList {
             next = n;
         }
     }
-    public void addToBack(String data) {
+    public void sum() {
+        int sum = 0;
+        Node temp = head;
+        while (temp != null) {
+            sum += temp.getData();
+        }
+    }
+    public void removeFirstItem() {
+        head = head.getNext();
+    }
+    public boolean isEmpty() {
+        return head == null;
+    }
+    public void removeLastItem() {
+        if (isEmpty()) {
+            return;
+        }
+        Node current = head.getNext();
+        Node previous = head;
+        while (current != null) {
+            previous = current;
+            current = current.getNext();
+        }
+        previous.setNext(current);
+    }
+    public void addToBack(int data) {
         if (head == null) {
             head = new Node(data);
         }
@@ -32,7 +57,7 @@ public class LinkedList {
             temp.next = newNode;
         }
     }
-    public void addToFront(String data) {
+    public void addToFront(int data) {
         if (head == null) {
             head = new Node(data);
         }
@@ -42,12 +67,12 @@ public class LinkedList {
             head = newNode;
         }
     }
-    public void remove(String data) {
+    public void remove(int data) {
         if (head == null) {
             return; // List is empty, nothing to remove
         }
 
-        if (data.equals(head.getData())) {
+        if (data == head.getData()) {
             head = head.getNext();
             return; // Found and removed the node from the head
         }
@@ -56,7 +81,7 @@ public class LinkedList {
         Node current = head.getNext();
 
         while (current != null) {
-            if (data.equals(current.getData())) {
+            if (data == current.getData()) {
                 previous.setNext(current.getNext());
                 return; // Found and removed the node
             }
