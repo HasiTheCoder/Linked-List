@@ -18,112 +18,53 @@ public class intLinkerList {
         private void setNext(Node n) {
             next = n;
         }
-    }
-    public void selectionSort() {
-        if (head == null || head.getNext() == null) {
-            // Empty or single-node list, nothing to sort
-            return;
-        }
-
-        Node current = head;
-        while (current != null) {
-            Node minNode = findMinimumNode(current);
-            swapNodes(current, minNode);
-            current = current.getNext();
+        private void setData(int dataN) {
+            data = dataN;
         }
     }
-
-    // Helper method to find the minimum node starting from a given node
-    private Node findMinimumNode(Node startNode) {
-        Node minNode = startNode;
-        Node current = startNode.getNext();
-
-        while (current != null) {
-            if (current.getData() < minNode.getData()) {
-                minNode = current;
-            }
-            current = current.getNext();
-        }
-
-        return minNode;
-    }
-
-    // Helper method to swap two nodes in the linked list
-    private void swapNodes(Node node1, Node node2) {
-        if (node1 == node2) {
-            // Nodes are the same, no need to swap
-            return;
-        }
-
-        // Find the previous nodes for node1 and node2
-        Node prevNode1 = null;
-        Node prevNode2 = null;
-        Node current = head;
-
-        while (current != null) {
-            if (current.getNext() == node1) {
-                prevNode1 = current;
-            } else if (current.getNext() == node2) {
-                prevNode2 = current;
-            }
-            current = current.getNext();
-        }
-
-        // Update the previous nodes' next pointers
-        if (prevNode1 != null) {
-            prevNode1.setNext(node2);
-        } else {
-            head = node2;
-        }
-
-        if (prevNode2 != null) {
-            prevNode2.setNext(node1);
-        } else {
-            head = node1;
-        }
-
-        // Swap the next pointers of node1 and node2
-        Node temp = node1.getNext();
-        node1.setNext(node2.getNext());
-        node2.setNext(temp);
+    public int getHead() {
+        return head.getData();
     }
     public void bubbleSort() {
-        if (head == null || head.getNext() == null) {
-            // Empty or single-node list, nothing to sort
-            return;
-        }
-
-        boolean swapped;
-        do {
+        int size = size()-1;
+        Node temp = head;
+        boolean swapped = true;
+        int i = 0;
+        while (swapped) {
             swapped = false;
-            Node current = head;
-            Node previous = null;
-
-            while (current.getNext() != null) {
-                if (current.getData() > current.getNext().getData()) {
-                    // Swap adjacent nodes
-                    Node temp = current.getNext();
-                    current.setNext(temp.getNext());
-                    temp.setNext(current);
-
-                    if (previous != null) {
-                        // Update the previous node's next pointer
-                        previous.setNext(temp);
-                    } else {
-                        // Update the head pointer if the first node was swapped
-                        head = temp;
-                    }
-
-                    // Update the current node and set swapped flag
-                    previous = temp;
+            for (int j = 0; j < size-i; j++) {
+                if (temp.getData() > temp.getNext().getData()){
+                    int tempData = temp.getData();
+                    temp.setData(temp.getNext().getData());
+                    temp.getNext().setData(tempData);
                     swapped = true;
-                } else {
-                    // Move to the next pair of nodes
-                    previous = current;
-                    current = current.next;
                 }
             }
-        } while (swapped);
+            i++;
+        }
+    }
+    public void selectionSort() {
+        int size = size();
+        Node temp = head;
+        Node smallestNode;
+        for (int i = 0; i < size; i++) {
+            smallestNode = findMinNode(temp);
+            int tempData = temp.getData();
+            temp.setData(smallestNode.getData());
+            smallestNode.setData(tempData);
+            temp = temp.getNext();
+        }
+    }
+    public Node findMinNode(Node startNode) {
+        Node smallestNode = head;
+        Node temp = startNode;
+        while (temp != null) {
+            if (temp.getData() > temp.getNext().getData()) {
+                smallestNode = temp.getNext();
+            }
+            temp = temp.getNext();
+        }
+        return smallestNode;
     }
     public boolean isSortedIncreasing() {
         if (isEmpty()) {
@@ -142,11 +83,15 @@ public class intLinkerList {
         }
         return true;
     }
-    public void removeFirstItem(){
+    public int removeFirstItem(){
         if (isEmpty()) {
-            return;
+            return -1212351246;
         }
-        head = head.getNext();
+        else {
+            int temp = head.getData();
+            head = head.getNext();
+            return temp;
+        }
     }
     public void removeLastTime() {
         if (isEmpty()) {
