@@ -29,9 +29,6 @@ public class LinkedList {
     public void removeFirstItem() {
         head = head.getNext();
     }
-    public boolean isEmpty() {
-        return head == null;
-    }
     public void removeLastItem() {
         if (isEmpty()) {
             return;

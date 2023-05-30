@@ -26,7 +26,7 @@ public class intLinkerList {
         Node current = head.getNext();
         Node previous = head;
         while (current != null) {
-            if (previous.getData() < current.getData() && current.getNext().getData() > current.getData()) {
+            if (previous.getData() < current.getData()) {
                 previous = current;
                 current = current.getNext();
             }
