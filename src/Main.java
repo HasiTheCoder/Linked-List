@@ -11,59 +11,64 @@ public class Main {
             int choice = scanner.nextInt();
             scanner.nextLine();
 
-            switch (choice) {
-                case 1 -> {
-                    linkedList = new intLinkerList();
-                    System.out.println("New empty list created.");
+            if (choice == 1) {
+                linkedList = new intLinkerList();
+                System.out.println("New empty list created.");
+            }
+            else if (choice == 2) {
+                if (linkedList.isSortedIncreasing()) {
+                    System.out.println("Is sorted increasing");
                 }
-                case 2 -> {
-                    if (linkedList.isSortedIncreasing()) {
-                        System.out.println("Is sorted increasing");
-                    }
-                    else {
-                        System.out.println("Is not sorted increasing");
-                    }
-                    System.out.println(linkedList);
+                else {
+                    System.out.println("Is not sorted increasing");
                 }
-                case 3 -> {
-                    System.out.println("Enter data to add: ");
-                    linkedList.addToFront(scanner.nextInt());
-                    scanner.nextLine();
-                    System.out.println(linkedList);
-                }
-                case 4 -> {
-                    System.out.println("enter data to remove from linked list: ");
-                    linkedList.remove(scanner.nextInt());
-                    scanner.nextLine();
-                    System.out.println(linkedList);
-                }
-                case 5 -> {
-                    linkedList.makeEmpty();
-                    System.out.println("List cleared.");
-                }
-                case 6 -> System.out.println("List is " + (linkedList.isEmpty() ? "empty." : "not empty."));
-                case 7 -> System.out.println("Number of elements in the list: " + linkedList.size());
-                case 8 -> System.out.println(linkedList);
-                case 9 -> {
-                    exit = true;
-                    System.out.println("Exiting the program. Goodbye!");
-                }
-                case 10 -> {
-                    System.out.println("Enter data to add: ");
-                    linkedList.addToBack(scanner.nextInt());
-                    scanner.nextLine();
-                    System.out.println(linkedList);
-
-                }
-                case 11 -> {
-                    linkedList.removeFirstItem();
-                    System.out.println(linkedList);
-                }
-                case 12 -> {
-                    linkedList.removeLastTime();
-                    System.out.println(linkedList);
-                }
-                case 13 -> System.out.println("Sum: " + linkedList.sum());
+                System.out.println(linkedList);
+            }
+            else if (choice == 3) {
+                System.out.println("Enter data to add: ");
+                linkedList.addToFront(scanner.nextInt());
+                scanner.nextLine();
+                System.out.println(linkedList);
+            }
+            else if (choice == 4) {
+                System.out.println("enter data to remove from linked list: ");
+                linkedList.remove(scanner.nextInt());
+                scanner.nextLine();
+                System.out.println(linkedList);
+            }
+            else if (choice == 5) {
+                linkedList.makeEmpty();
+                System.out.println("List cleared.");
+            }
+            else if (choice == 6) {
+                System.out.println("List is " + (linkedList.isEmpty() ? "empty." : "not empty."));
+            }
+            else if (choice == 7) {
+                System.out.println("Number of elements in the list: " + linkedList.size());
+            }
+            else if (choice == 8) {
+                System.out.println(linkedList);
+            }
+            else if (choice == 9) {
+                exit = true;
+                System.out.println("Exiting the program. Goodbye!");
+            }
+            else if (choice == 10) {
+                System.out.println("Enter data to add: ");
+                linkedList.addToBack(scanner.nextInt());
+                scanner.nextLine();
+                System.out.println(linkedList);
+            }
+            else if (choice == 11) {
+                linkedList.removeFirstItem();
+                System.out.println(linkedList);
+            }
+            else if (choice == 12) {
+                linkedList.removeLastTime();
+                System.out.println(linkedList);
+            }
+            else if (choice == 13) {
+                System.out.println("Sum: " + linkedList.sum());
             }
         }
     }

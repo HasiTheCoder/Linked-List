@@ -19,6 +19,112 @@ public class intLinkerList {
             next = n;
         }
     }
+    public void selectionSort() {
+        if (head == null || head.getNext() == null) {
+            // Empty or single-node list, nothing to sort
+            return;
+        }
+
+        Node current = head;
+        while (current != null) {
+            Node minNode = findMinimumNode(current);
+            swapNodes(current, minNode);
+            current = current.getNext();
+        }
+    }
+
+    // Helper method to find the minimum node starting from a given node
+    private Node findMinimumNode(Node startNode) {
+        Node minNode = startNode;
+        Node current = startNode.getNext();
+
+        while (current != null) {
+            if (current.getData() < minNode.getData()) {
+                minNode = current;
+            }
+            current = current.getNext();
+        }
+
+        return minNode;
+    }
+
+    // Helper method to swap two nodes in the linked list
+    private void swapNodes(Node node1, Node node2) {
+        if (node1 == node2) {
+            // Nodes are the same, no need to swap
+            return;
+        }
+
+        // Find the previous nodes for node1 and node2
+        Node prevNode1 = null;
+        Node prevNode2 = null;
+        Node current = head;
+
+        while (current != null) {
+            if (current.getNext() == node1) {
+                prevNode1 = current;
+            } else if (current.getNext() == node2) {
+                prevNode2 = current;
+            }
+            current = current.getNext();
+        }
+
+        // Update the previous nodes' next pointers
+        if (prevNode1 != null) {
+            prevNode1.setNext(node2);
+        } else {
+            head = node2;
+        }
+
+        if (prevNode2 != null) {
+            prevNode2.setNext(node1);
+        } else {
+            head = node1;
+        }
+
+        // Swap the next pointers of node1 and node2
+        Node temp = node1.getNext();
+        node1.setNext(node2.getNext());
+        node2.setNext(temp);
+    }
+    public void bubbleSort() {
+        if (head == null || head.getNext() == null) {
+            // Empty or single-node list, nothing to sort
+            return;
+        }
+
+        boolean swapped;
+        do {
+            swapped = false;
+            Node current = head;
+            Node previous = null;
+
+            while (current.getNext() != null) {
+                if (current.getData() > current.getNext().getData()) {
+                    // Swap adjacent nodes
+                    Node temp = current.getNext();
+                    current.setNext(temp.getNext());
+                    temp.setNext(current);
+
+                    if (previous != null) {
+                        // Update the previous node's next pointer
+                        previous.setNext(temp);
+                    } else {
+                        // Update the head pointer if the first node was swapped
+                        head = temp;
+                    }
+
+                    // Update the current node and set swapped flag
+                    previous = temp;
+                    swapped = true;
+                } else {
+                    // Move to the next pair of nodes
+                    previous = current;
+                    current = current.next;
+                }
+            }
+        } while (swapped);
+    }
     public boolean isSortedIncreasing() {
         if (isEmpty()) {
             return false;
@@ -40,17 +146,23 @@ public class intLinkerList {
         if (isEmpty()) {
             return;
         }
-        head.setNext(head);
+        head = head.getNext();
     }
     public void removeLastTime() {
         if (isEmpty()) {
             return;
         }
+        if (head.getNext() == null) {
+            head = null;
+            return;
+        }
         Node current = head.getNext();
+        Node beforeCurrent = head;
         while (current.getNext() != null) {
+            beforeCurrent = current;
             current = current.getNext();
         }
-        current = null;
+        beforeCurrent.setNext(null);
     }
     public int sum() {
         Node temp = head;
