@@ -1,53 +1,64 @@
 import java.util.Scanner;
+import java.util.Stack;
 
 public class Main {
-    private static Scanner scanner = new Scanner(System.in);
-    private static intLinkerList linkedList = new intLinkerList();
-
+    private static Scanner input = new Scanner(System.in);
+    private static intLinkedList intLinkedList = new intLinkedList();
+    private static LinkedList linkedList = new LinkedList();
+    private static DoublyLinkedList menus;
+    private static QueueList queueList = new QueueList();
+    private static StackList stackList = new StackList();
     public static void main(String[] args) {
+        createMenus();
         boolean exit = false;
+        int page = 1;
+        while (!exit) {
+            int choice = displayMenus(page);
+        }
+
+
         while (!exit) {
             displayMenu();
-            int choice = scanner.nextInt();
-            scanner.nextLine();
+            int choice = input.nextInt();
+            input.nextLine();
 
             if (choice == 1) {
-                linkedList = new intLinkerList();
+                intLinkedList = new intLinkedList();
                 System.out.println("New empty list created.");
             }
             else if (choice == 2) {
-                if (linkedList.isSortedIncreasing()) {
+                if (intLinkedList.isSortedIncreasing()) {
                     System.out.println("Is sorted increasing");
                 }
                 else {
                     System.out.println("Is not sorted increasing");
                 }
-                System.out.println(linkedList);
+                System.out.println(intLinkedList);
             }
             else if (choice == 3) {
                 System.out.println("Enter data to add: ");
-                linkedList.addToFront(scanner.nextInt());
-                scanner.nextLine();
-                System.out.println(linkedList);
+                intLinkedList.addToFront(input.nextInt());
+                input.nextLine();
+                System.out.println(intLinkedList);
             }
             else if (choice == 4) {
                 System.out.println("enter data to remove from linked list: ");
-                linkedList.remove(scanner.nextInt());
-                scanner.nextLine();
-                System.out.println(linkedList);
+                intLinkedList.remove(input.nextInt());
+                input.nextLine();
+                System.out.println(intLinkedList);
             }
             else if (choice == 5) {
-                linkedList.makeEmpty();
+                intLinkedList.makeEmpty();
                 System.out.println("List cleared.");
             }
             else if (choice == 6) {
-                System.out.println("List is " + (linkedList.isEmpty() ? "empty." : "not empty."));
+                System.out.println("List is " + (intLinkedList.isEmpty() ? "empty." : "not empty."));
             }
             else if (choice == 7) {
-                System.out.println("Number of elements in the list: " + linkedList.size());
+                System.out.println("Number of elements in the list: " + intLinkedList.size());
             }
             else if (choice == 8) {
-                System.out.println(linkedList);
+                System.out.println(intLinkedList);
             }
             else if (choice == 9) {
                 exit = true;
@@ -55,40 +66,91 @@ public class Main {
             }
             else if (choice == 10) {
                 System.out.println("Enter data to add: ");
-                linkedList.addToBack(scanner.nextInt());
-                scanner.nextLine();
-                System.out.println(linkedList);
+                intLinkedList.addToBack(input.nextInt());
+                input.nextLine();
+                System.out.println(intLinkedList);
             }
             else if (choice == 11) {
-                linkedList.removeFirstItem();
-                System.out.println(linkedList);
+                intLinkedList.removeFirstItem();
+                System.out.println(intLinkedList);
             }
             else if (choice == 12) {
-                linkedList.removeLastTime();
-                System.out.println(linkedList);
+                intLinkedList.removeLastTime();
+                System.out.println(intLinkedList);
             }
             else if (choice == 13) {
-                System.out.println("Sum: " + linkedList.sum());
+                System.out.println("Sum: " + intLinkedList.sum());
             }
         }
     }
 
-    private static void displayMenu() {
-        System.out.println("\n--- Linked List Tester ---");
-        System.out.println("1. New Empty List");
-        System.out.println("2. Check if sorted least to greatest");
-        System.out.println("3. Add item to front");
-        System.out.println("4. Remove specific item");
-        System.out.println("5. Clear list");
-        System.out.println("6. Is list Empty?");
-        System.out.println("7. Number of elements in list");
-        System.out.println("8. Display the list");
-        System.out.println("9. Exit");
-        System.out.println("10. Add item to back");
-        System.out.println("11. Remove first item");
-        System.out.println("12. Remove last item");
-        System.out.println("13. Sum");
-        System.out.print("Enter your choice: ");
-    }
+    private static int displayMenus(int page) {
+        if (page == 1) {
+            System.out.println(menus.getHead());
+        }
+        else if (page == 2) {
 
+        }
+    }
+    private static void createMenus() {
+        String page1 = """
+                1. Linked List
+                2. Int Linked List
+                3. Queue List
+                4. Stack List
+                Enter your choice:
+                """;
+        menus.addToFront(page1);
+        String page2StringLinkedList = """
+                1. Add item to front
+                2. Add item to back
+                3. Remove item
+                4. Remove first item
+                5. Remove last item
+                6. Size
+                7. Display List
+                8. Is list empty
+                9. Make list empty
+                10. Return to previous page
+                Enter your choice:
+                """;
+        menus.addToBack(page2StringLinkedList);
+        String page3IntLinkedList = """
+                1. Add item to front
+                2. Add item to back
+                3. Remove item
+                4. Remove first item
+                5. Remove last item
+                6. Make list empty
+                7. Is list empty
+                8. Size
+                9. Display list
+                10. Sum
+                11. Return to previous page
+                12. Exit
+                """;
+        menus.addToBack(page3IntLinkedList);
+        String page4QueueList = """
+                1. Create queue with array of numbers
+                2. Is queue empty
+                3. Enqueue
+                4. Dequeue
+                5. Size
+                6. Front
+                7. Make queue empty
+                8. Display Queue
+                """;
+        menus.addToBack(page4QueueList);
+        String page5StackList = """
+                1. Create stack with array of numbers
+                2. Is stack empty
+                3. Push
+                4. Top
+                5. Pop
+                6. Size
+                7. Make stack empty
+                8. Display stack
+                """;
+        menus.addToBack(page5StackList);
+    }
 }

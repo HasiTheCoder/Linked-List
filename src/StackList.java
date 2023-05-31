@@ -1,12 +1,12 @@
 public class StackList {
     //Instance variables
-    private intLinkerList linkedList;
+    private intLinkedList linkedList;
     //constructor
     public StackList() {
-        linkedList = new intLinkerList();
+        linkedList = new intLinkedList();
     }
     public StackList(int[] array) {
-        linkedList = new intLinkerList();
+        linkedList = new intLinkedList();
         for(int i = 0; i < array.length; i++) {
             linkedList.addToFront(array[i]);
         }

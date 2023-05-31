@@ -1,11 +1,12 @@
-public class LinkedList {
+public class DoublyLinkedList {
     private Node head;
-    public LinkedList(){
+    public DoublyLinkedList(){
         head = null;
     }
     private class Node {
         private String data;
         private Node next;
+        private Node previous;
         private Node(String dataN) {
             data = dataN;
         }
@@ -15,9 +16,21 @@ public class LinkedList {
         private Node getNext() {
             return next;
         }
+        private Node getPrevious() {
+            return previous;
+        }
         private void setNext(Node n) {
             next = n;
         }
+        private void setPrevious(Node n) {
+            previous = n;
+        }
+    }
+    public String findNode(int index) {
+
+    }
+    public Node getHead() {
+        return head;
     }
     public void removeFirstItem() {
         head = head.getNext();

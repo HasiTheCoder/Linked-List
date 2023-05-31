@@ -1,6 +1,6 @@
-public class intLinkerList {
+public class intLinkedList {
     private Node head;
-    public intLinkerList() {
+    public intLinkedList() {
         head = null;
     }
     private class Node {
