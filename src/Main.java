@@ -85,23 +85,38 @@ public class Main {
     }
 
     private static int displayMenus(int page) {
+        int choice = 0;
         if (page == 1) {
-            System.out.println(menus.getHead());
+            System.out.println(menus.findNode(1));
+            choice = input.nextInt();
         }
         else if (page == 2) {
-
+            System.out.println(menus.findNode(2));
+            choice = input.nextInt();
         }
+        else if (page == 3) {
+            System.out.println(menus.findNode(3));
+            choice = input.nextInt();
+        }
+        else if(page == 4) {
+            System.out.println(menus.findNode(4));
+            choice = input.nextInt();
+        }
+        else if (page == 5) {
+            System.out.println(menus.findNode(5));
+            choice = input.nextInt();
+        }
+        return choice;
     }
     private static void createMenus() {
-        String page1 = """
+        String[] pages =
+                {"""
                 1. Linked List
                 2. Int Linked List
                 3. Queue List
                 4. Stack List
                 Enter your choice:
-                """;
-        menus.addToFront(page1);
-        String page2StringLinkedList = """
+                """,  """
                 1. Add item to front
                 2. Add item to back
                 3. Remove item
@@ -113,9 +128,7 @@ public class Main {
                 9. Make list empty
                 10. Return to previous page
                 Enter your choice:
-                """;
-        menus.addToBack(page2StringLinkedList);
-        String page3IntLinkedList = """
+                """, """
                 1. Add item to front
                 2. Add item to back
                 3. Remove item
@@ -128,9 +141,7 @@ public class Main {
                 10. Sum
                 11. Return to previous page
                 12. Exit
-                """;
-        menus.addToBack(page3IntLinkedList);
-        String page4QueueList = """
+                """, """
                 1. Create queue with array of numbers
                 2. Is queue empty
                 3. Enqueue
@@ -139,9 +150,7 @@ public class Main {
                 6. Front
                 7. Make queue empty
                 8. Display Queue
-                """;
-        menus.addToBack(page4QueueList);
-        String page5StackList = """
+                """, """
                 1. Create stack with array of numbers
                 2. Is stack empty
                 3. Push
@@ -150,7 +159,9 @@ public class Main {
                 6. Size
                 7. Make stack empty
                 8. Display stack
-                """;
-        menus.addToBack(page5StackList);
+                """};
+        for (int i = 0; i < pages.length; i++) {
+            menus.addToBack(pages[i]);
+        }
     }
 }

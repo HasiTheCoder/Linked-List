@@ -26,8 +26,20 @@ public class DoublyLinkedList {
             previous = n;
         }
     }
+    public String recursiveFindNode(int index) {
+        
+    }
     public String findNode(int index) {
-
+        int counter = 1;
+        Node temp = head;
+        while (temp != null && counter < index) {
+            temp = temp.getNext();
+            counter++;
+        }
+        if (temp == null) {
+            return "Node not found";
+        }
+        return temp.getData();
     }
     public Node getHead() {
         return head;
