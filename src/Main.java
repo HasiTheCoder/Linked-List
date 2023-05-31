@@ -14,6 +14,11 @@ public class Main {
         int page = 1;
         while (!exit) {
             int choice = displayMenus(page);
+            if (page == 1) {
+                page = choice+1;
+            }
+            findChoice(choice, page);
+
         }
 
 
@@ -80,6 +85,131 @@ public class Main {
             }
             else if (choice == 13) {
                 System.out.println("Sum: " + intLinkedList.sum());
+            }
+        }
+    }
+
+    private static void findChoice(int choice, int page) {
+        if (page == 2) {
+            if (choice == 1) {
+                System.out.println("Enter data to add: ");
+                linkedList.addToFront(input.nextLine());
+            }
+            else if (choice == 2) {
+                System.out.println("Enter data to add: ");
+                linkedList.addToBack(input.nextLine());
+            }
+            else if (choice == 3) {
+                System.out.println("Enter the data to remove: ");
+                linkedList.remove(input.nextLine());
+            }
+            else if (choice == 4) {
+                linkedList.removeFirstItem();
+            }
+            else if (choice == 5) {
+                linkedList.removeLastItem();
+            }
+            else if (choice == 6) {
+                System.out.println(linkedList.size());
+            }
+            else if (choice == 7) {
+                System.out.println(linkedList);
+            }
+            else if (choice == 8) {
+                System.out.println("Is list empty: " + linkedList.isEmpty());
+            }
+            else if (choice == 9) {
+                linkedList.makeEmpty();
+            }
+            else if (choice == 10) {
+                System.out.println("goodbye");
+            }
+        }
+        if (page == 3) {
+            if (choice == 1) {
+
+            }
+            else if (choice == 2) {
+
+            }
+            else if (choice == 3) {
+
+            }
+            else if (choice == 4) {
+
+            }
+            else if (choice == 5) {
+
+            }
+            else if (choice == 6) {
+
+            }
+            else if (choice == 7) {
+
+            }
+            else if (choice == 8) {
+            }
+            else if (choice == 9) {
+
+            }
+            else if (choice == 10) {
+
+            }
+            else if (choice == 11) {
+
+            }
+            else if (choice == 12) {
+
+            }
+        }
+        if (page == 4) {
+            if (choice == 1) {
+
+            }
+            else if (choice == 2) {
+
+            }
+            else if (choice == 3) {
+
+            }
+            else if (choice == 4) {
+
+            }
+            else if (choice == 5) {
+
+            }
+            else if (choice == 6) {
+
+            }
+            else if (choice == 7) {
+
+            }
+            else if (choice == 8) {
+            }
+        }
+        if (page == 5) {
+            if (choice == 1) {
+
+            }
+            else if (choice == 2) {
+
+            }
+            else if (choice == 3) {
+
+            }
+            else if (choice == 4) {
+
+            }
+            else if (choice == 5) {
+
+            }
+            else if (choice == 6) {
+
+            }
+            else if (choice == 7) {
+
+            }
+            else if (choice == 8) {
             }
         }
     }

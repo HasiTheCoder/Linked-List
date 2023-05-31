@@ -92,6 +92,12 @@ public class LinkedList {
         }
         return size;
     }
+    public int sizeRecursively(Node temp) {
+        if (temp == null) {
+            return 0;
+        }
+        return sizeRecursively(temp.getNext()) + 1;
+    }
     public void makeEmpty() {
         head = null;
     }
@@ -99,6 +105,12 @@ public class LinkedList {
      * See all node data
      * @return
      */
+    public String toStringRecursively(Node temp) {
+        if (temp == null) {
+            return "";
+        }
+        return toStringRecursively(temp.getNext()) + " " + temp.getData();
+    }
     public String toString() {
         Node temp = head;
         String list = "";
