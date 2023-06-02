@@ -23,7 +23,6 @@ public class IntegerList {
         else
             head.insertInOrder(num);
     }
-
     public void removeLastItem() {
         if (head == null)
             return;
