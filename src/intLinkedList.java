@@ -93,13 +93,13 @@ public class intLinkedList {
             return temp;
         }
     }
-    public void removeLastTime() {
+    public int removeLastTime() {
         if (isEmpty()) {
-            return;
+            return 0;
         }
         if (head.getNext() == null) {
             head = null;
-            return;
+            return 0;
         }
         Node current = head.getNext();
         Node beforeCurrent = head;
@@ -108,6 +108,7 @@ public class intLinkedList {
             current = current.getNext();
         }
         beforeCurrent.setNext(null);
+        return 0;
     }
     public int sum() {
         Node temp = head;

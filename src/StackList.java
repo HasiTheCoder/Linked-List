@@ -24,7 +24,7 @@ public class StackList {
     }
     //removing items from the stack
     public int pop() {
-        return linkedList.removeFirstItem();
+        return linkedList.removeLastTime();
     }
     //number of items in stack
     public int size() {
